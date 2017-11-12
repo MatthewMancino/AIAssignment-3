@@ -1,27 +1,28 @@
 import bisect
 
 class Fact:
+    factStr = None;
     fact = {}
-    name = None
-    def __init__(self,adjective,content):
-        self.fact[content] = adjective
-        self.name = adjective
-    def factCheck(content):
-        if (self.fact[content] != None):
+    def __init__(self,fStr,adjective,variable):
+        self.fact[variable] = adjective
+        self.factStr = fStr
+    def factCheck(variable):
+        if (self.fact[variable] != None):
             return True
 
 
 
 class Rule:
-    LHS = {};
-    RHS = {};
+    ruleStr = None;
+    LHS = [];
+    RHS = None;
     variables = [];
-    def __init__(self):
-        print("hi")
+    def __init__(self,rStr,L,R):
+        self.LHS = list(L)
+        self.RHS = str(R)
+        self.ruleStr = rStr
     def forwardChain(self, facts):
-        for a in facts:
-            bisect
-
+        for atom in LHS:
 
 
 
