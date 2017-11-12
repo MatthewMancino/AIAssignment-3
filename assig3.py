@@ -8,9 +8,9 @@ from FOLlib import Fact, Rule, Proof
 
 
 def solve(facts,rules,goal):
-    # while goal not in facts:
-    #     for y in rules:
-    #         y.forwardChain(facts)
+    while goal not in facts:
+        for y in rules:
+            y.forwardChain(facts)
 
 def main():
 
