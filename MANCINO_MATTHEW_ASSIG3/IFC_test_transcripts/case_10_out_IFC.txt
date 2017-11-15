@@ -1,0 +1,33 @@
+
+INITIAL FACTS
+American(West)
+Nation(Nono)
+Enemy(Nono,America)
+Owns(Nono,M1)
+Missile(M1)
+Nation(America)
+
+INITAL RULES
+American(x) ^ Weapon(y) ^ Nation(z) ^ Hostile(z) ^ Sells(x,z,y) -> Criminal(x)
+Owns(Nono,x) ^ Missile(x) -> Sells(West,Nono,x)
+Missile(x) -> Weapon(x)
+Enemy(x,America) -> Hostile(x)
+
+GOALS
+Criminal(West)
+
+
+
+Iteration 0
+FIRING RULE:     Sells(West,Nono,M1)    INFERRED
+FIRING RULE:     Weapon(M1)    INFERRED
+FIRING RULE:     Hostile(Nono)    INFERRED
+Sells(West,Nono,M1)
+Weapon(M1)
+Hostile(Nono)
+
+
+Iteration 1
+FIRING RULE:     Criminal(West)    INFERRED
+Criminal(West)
+Proved

@@ -1,0 +1,40 @@
+
+INITIAL FACTS
+Parent(Lisa,Eric)
+Parent(Lisa,Rachel)
+Parent(Speed,Lisa)
+Parent(Speed,Jay)
+Parent(Jay,Frances)
+Distinct(Eric,Rachel)
+Distinct(Lisa,Jay)
+
+INITAL RULES
+Parent(x,y) ^ Parent(x,z) ^ Distinct(y,z) -> Sibling(y,z)
+Parent(x,y) ^ Sibling(x,z) ^ Parent(z,w) -> Cousin(y,w)
+Distinct(x,y) -> Distinct(y,x)
+
+GOALS
+Sibling(Lisa,Jay)
+
+
+
+Iteration 0
+FIRING RULE:     Sibling(Eric,Rachel)    INFERRED
+FIRING RULE:     Distinct(Rachel,Eric)    INFERRED
+Sibling(Eric,Rachel)
+Distinct(Rachel,Eric)
+
+
+Iteration 1
+FIRING RULE:     Sibling(Rachel,Eric)    INFERRED
+FIRING RULE:     Distinct(Jay,Lisa)    INFERRED
+Sibling(Rachel,Eric)
+Distinct(Jay,Lisa)
+
+
+Iteration 2
+FIRING RULE:     Sibling(Lisa,Jay)    INFERRED
+FIRING RULE:     Cousin(Eric,Frances)    INFERRED
+Sibling(Lisa,Jay)
+Cousin(Eric,Frances)
+Proved

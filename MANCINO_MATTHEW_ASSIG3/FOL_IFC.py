@@ -17,21 +17,46 @@ def solve(facts,rules,goal):
     initial_rules = list()
     initial_rules = list(deepcopy(rules))
     #print(initial_rules)
-
-
+    table = []
+    iteration = 0
     while(True):
-        ans = False
-        for y in rules:
-            #print("Testing Rule "+y.ruleStr+"\n")
-            if(y.forwardChain(facts)):
-                ans = True
+        print("\n\nIteration "+str(iteration))
+        table.append([])
+        if(iteration == 0):
+            for y in rules:
+                #print("Testing Rule"+y.ruleStr)
+                newrule = y.forwardChain(facts)
+                if(newrule != None):
+                    table[iteration].append(newrule)
+            #print("         Facts inferred on iteration" + str(iteration))
+            for fi in table[iteration]:
+                print(fi.factStr)
+        else:
+            for y in rules:                     #FOR EACH RULE
+                for conj in y.LHS:              #For each conjunction
+                    for t in table[iteration-1]:                 #[]
+                        if (y.unification(conj,t) != None or y.unification(conj,t) != []):
+                            #print("Testing Rule "+y.ruleStr)
+                            newrule = y.forwardChain(facts)
+                            break
+                    break
+                #print("Skipping Rule "+y.ruleStr)
+                if(newrule != None):
+                    table[iteration].append(newrule)
+            #print("         Facts inferred on iteration" + str(iteration))
+            for fi in table[iteration]:
+                print(fi.factStr)
+
+
+
         rules = list(deepcopy(initial_rules))
         if checkKB(goal,facts):
             print("Proved")
             return
-        elif(ans == False):
+        if(table[iteration-1] == []):
             print(goal+"   Not Proved")
             return
+        iteration += 1
 
 def main():
 

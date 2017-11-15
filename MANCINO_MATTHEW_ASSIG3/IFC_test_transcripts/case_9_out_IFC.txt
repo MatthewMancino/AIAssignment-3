@@ -1,0 +1,40 @@
+
+INITIAL FACTS
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+
+INITAL RULES
+Pompeian(x) -> Roman(x)
+Man(x) -> People(x)
+People(x) ^ Assassinate(x,y) ^ Ruler(y) -> Traitor(x)
+Roman(x) ^ Traitor(x) ^ Assassinate(x,y) -> Hate(x,y)
+
+GOALS
+Traitor(Caesar)
+
+
+
+Iteration 0
+FIRING RULE:     Roman(Marcus)    INFERRED
+FIRING RULE:     People(Marcus)    INFERRED
+FIRING RULE:     Traitor(Marcus)    INFERRED
+FIRING RULE:     Hate(Marcus,Caesar)    INFERRED
+Roman(Marcus)
+People(Marcus)
+Traitor(Marcus)
+Hate(Marcus,Caesar)
+
+
+Iteration 1
+FIRING RULE:     People(Caesar)    INFERRED
+People(Caesar)
+
+
+Iteration 2
+
+
+Iteration 3
+Traitor(Caesar)   Not Proved

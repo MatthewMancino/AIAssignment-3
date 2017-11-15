@@ -1,0 +1,33 @@
+
+INITIAL FACTS
+Giraffe(Bob)
+Barks(Sally)
+WagsTail(Sally)
+
+INITAL RULES
+TooBig(x) ^ GoodSize(y) -> BetterPet(y,x)
+Giraffe(x) -> TooBig(x)
+Dog(x) -> GoodSize(x)
+Barks(x) ^ WagsTail(x) -> Dog(x)
+
+GOALS
+BetterPet(Sally,Bob)
+
+
+
+Iteration 0
+FIRING RULE:     TooBig(Bob)    INFERRED
+FIRING RULE:     Dog(Sally)    INFERRED
+TooBig(Bob)
+Dog(Sally)
+
+
+Iteration 1
+FIRING RULE:     GoodSize(Sally)    INFERRED
+GoodSize(Sally)
+
+
+Iteration 2
+FIRING RULE:     BetterPet(Sally,Bob)    INFERRED
+BetterPet(Sally,Bob)
+Proved

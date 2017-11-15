@@ -23,7 +23,7 @@ def solve(facts,rules,goal):
         ans = False
         for y in rules:
             #print("Testing Rule "+y.ruleStr+"\n")
-            if(y.forwardChain(facts)):
+            if(y.forwardChain(facts) != None):
                 ans = True
         rules = list(deepcopy(initial_rules))
         if checkKB(goal,facts):

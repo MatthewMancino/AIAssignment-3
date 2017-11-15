@@ -1,0 +1,494 @@
+
+INITIAL FACTS
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+
+INITAL RULES
+Pompeian(x) -> Roman(x)
+Man(x) -> People(x)
+People(x) ^ Assassinate(x,y) ^ Ruler(y) -> Traitor(x)
+Roman(x) ^ Traitor(x) ^ Assassinate(x,y) -> Hate(x,y)
+
+GOALS
+Hate(Marcus,Caesar)
+Testing Rule Pompeian(x) -> Roman(x)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+
+BEFORE  0
+['Pompeian(x)']
+{'x': None}
+
+AFTER SUB0
+['Pompeian(Marcus)']
+{'x': 'Marcus'}
+Pompeian(Marcus)
+Pompeian(Marcus)
+True
+0
+1
+
+FIRING RULE:     Roman(Marcus)    INFERRED
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+
+
+Testing Rule Man(x) -> People(x)
+
+YOLOSWAG
+Man(Marcus)
+
+BEFORE  0
+['Man(x)']
+{'x': None}
+
+AFTER SUB0
+['Man(Marcus)']
+{'x': 'Marcus'}
+Man(Marcus)
+Man(Marcus)
+True
+0
+1
+
+FIRING RULE:     People(Marcus)    INFERRED
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+
+
+Testing Rule People(x) ^ Assassinate(x,y) ^ Ruler(y) -> Traitor(x)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+
+BEFORE  0
+['People(x)', 'Assassinate(x,y)', 'Ruler(y)']
+{'y': None, 'x': None}
+
+AFTER SUB0
+['People(Marcus)', 'Assassinate(Marcus,y)', 'Ruler(y)']
+{'y': None, 'x': 'Marcus'}
+People(Marcus)
+People(Marcus)
+True
+0
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+
+BEFORE  1
+['People(Marcus)', 'Assassinate(Marcus,y)', 'Ruler(y)']
+{'y': None, 'x': 'Marcus'}
+
+AFTER SUB1
+['People(Marcus)', 'Assassinate(Marcus,Caesar)', 'Ruler(Caesar)']
+{'y': 'Caesar', 'x': 'Marcus'}
+Assassinate(Marcus,Caesar)
+Assassinate(Marcus,Caesar)
+True
+1
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+Roman(Marcus)
+People(Marcus)
+Testing Rule Roman(x) ^ Traitor(x) ^ Assassinate(x,y) -> Hate(x,y)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+
+BEFORE  0
+['Roman(x)', 'Traitor(x)', 'Assassinate(x,y)']
+{'y': None, 'x': None}
+
+AFTER SUB0
+['Roman(Marcus)', 'Traitor(Marcus)', 'Assassinate(Marcus,y)']
+{'y': None, 'x': 'Marcus'}
+Roman(Marcus)
+Roman(Marcus)
+True
+0
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Marcus)
+Testing Rule Pompeian(x) -> Roman(x)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+
+BEFORE  0
+['Pompeian(x)']
+{'x': None}
+
+AFTER SUB0
+['Pompeian(Marcus)']
+{'x': 'Marcus'}
+Pompeian(Marcus)
+Pompeian(Marcus)
+True
+0
+1
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+Testing Rule Man(x) -> People(x)
+
+YOLOSWAG
+Man(Marcus)
+
+BEFORE  0
+['Man(x)']
+{'x': None}
+
+AFTER SUB0
+['Man(Marcus)']
+{'x': 'Marcus'}
+Man(Marcus)
+Man(Marcus)
+True
+0
+1
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+
+BEFORE  0
+['Man(x)']
+{'x': None}
+
+AFTER SUB0
+['Man(Caesar)']
+{'x': 'Caesar'}
+Man(Caesar)
+Man(Caesar)
+True
+0
+1
+
+FIRING RULE:     People(Caesar)    INFERRED
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+
+
+Testing Rule People(x) ^ Assassinate(x,y) ^ Ruler(y) -> Traitor(x)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+
+BEFORE  0
+['People(x)', 'Assassinate(x,y)', 'Ruler(y)']
+{'y': None, 'x': None}
+
+AFTER SUB0
+['People(Marcus)', 'Assassinate(Marcus,y)', 'Ruler(y)']
+{'y': None, 'x': 'Marcus'}
+People(Marcus)
+People(Marcus)
+True
+0
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+
+BEFORE  1
+['People(Marcus)', 'Assassinate(Marcus,y)', 'Ruler(y)']
+{'y': None, 'x': 'Marcus'}
+
+AFTER SUB1
+['People(Marcus)', 'Assassinate(Marcus,Caesar)', 'Ruler(Caesar)']
+{'y': 'Caesar', 'x': 'Marcus'}
+Assassinate(Marcus,Caesar)
+Assassinate(Marcus,Caesar)
+True
+1
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+People(Caesar)
+
+BEFORE  0
+['People(x)', 'Assassinate(x,y)', 'Ruler(y)']
+{'y': None, 'x': None}
+
+AFTER SUB0
+['People(Caesar)', 'Assassinate(Caesar,y)', 'Ruler(y)']
+{'y': None, 'x': 'Caesar'}
+People(Caesar)
+People(Caesar)
+True
+0
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+Testing Rule Roman(x) ^ Traitor(x) ^ Assassinate(x,y) -> Hate(x,y)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+
+BEFORE  0
+['Roman(x)', 'Traitor(x)', 'Assassinate(x,y)']
+{'y': None, 'x': None}
+
+AFTER SUB0
+['Roman(Marcus)', 'Traitor(Marcus)', 'Assassinate(Marcus,y)']
+{'y': None, 'x': 'Marcus'}
+Roman(Marcus)
+Roman(Marcus)
+True
+0
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+People(Marcus)
+People(Caesar)
+Testing Rule Pompeian(x) -> Roman(x)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+
+BEFORE  0
+['Pompeian(x)']
+{'x': None}
+
+AFTER SUB0
+['Pompeian(Marcus)']
+{'x': 'Marcus'}
+Pompeian(Marcus)
+Pompeian(Marcus)
+True
+0
+1
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+Testing Rule Man(x) -> People(x)
+
+YOLOSWAG
+Man(Marcus)
+
+BEFORE  0
+['Man(x)']
+{'x': None}
+
+AFTER SUB0
+['Man(Marcus)']
+{'x': 'Marcus'}
+Man(Marcus)
+Man(Marcus)
+True
+0
+1
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+
+BEFORE  0
+['Man(x)']
+{'x': None}
+
+AFTER SUB0
+['Man(Caesar)']
+{'x': 'Caesar'}
+Man(Caesar)
+Man(Caesar)
+True
+0
+1
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+Testing Rule People(x) ^ Assassinate(x,y) ^ Ruler(y) -> Traitor(x)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+
+BEFORE  0
+['People(x)', 'Assassinate(x,y)', 'Ruler(y)']
+{'y': None, 'x': None}
+
+AFTER SUB0
+['People(Marcus)', 'Assassinate(Marcus,y)', 'Ruler(y)']
+{'y': None, 'x': 'Marcus'}
+People(Marcus)
+People(Marcus)
+True
+0
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+
+BEFORE  1
+['People(Marcus)', 'Assassinate(Marcus,y)', 'Ruler(y)']
+{'y': None, 'x': 'Marcus'}
+
+AFTER SUB1
+['People(Marcus)', 'Assassinate(Marcus,Caesar)', 'Ruler(Caesar)']
+{'y': 'Caesar', 'x': 'Marcus'}
+Assassinate(Marcus,Caesar)
+Assassinate(Marcus,Caesar)
+True
+1
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+People(Caesar)
+
+BEFORE  0
+['People(x)', 'Assassinate(x,y)', 'Ruler(y)']
+{'y': None, 'x': None}
+
+AFTER SUB0
+['People(Caesar)', 'Assassinate(Caesar,y)', 'Ruler(y)']
+{'y': None, 'x': 'Caesar'}
+People(Caesar)
+People(Caesar)
+True
+0
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+Testing Rule Roman(x) ^ Traitor(x) ^ Assassinate(x,y) -> Hate(x,y)
+
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+
+BEFORE  0
+['Roman(x)', 'Traitor(x)', 'Assassinate(x,y)']
+{'y': None, 'x': None}
+
+AFTER SUB0
+['Roman(Marcus)', 'Traitor(Marcus)', 'Assassinate(Marcus,y)']
+{'y': None, 'x': 'Marcus'}
+Roman(Marcus)
+Roman(Marcus)
+True
+0
+YOLOSWAG
+Man(Marcus)
+Pompeian(Marcus)
+Ruler(Caesar)
+Man(Caesar)
+Assassinate(Marcus,Caesar)
+Roman(Marcus)
+People(Marcus)
+People(Caesar)
+People(Marcus)
+People(Caesar)
+Hate(Marcus,Caesar)   Not Proved
